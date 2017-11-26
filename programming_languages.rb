@@ -1,4 +1,4 @@
-# require 'pry'
+require 'pry'
 
 languages = {
   :oo => {
@@ -37,9 +37,10 @@ def reformat_languages(languages)
     languages.each do |style,data|
       data.each do |language,type_value|
         type_value.each do |type_key,type_desc|
-          # if !new_hash[language]
+          if new_hash[language] == false
+            binding.pry
           new_hash[language] = {type: type_desc, style: [] << style }
-          # else new_hash[language][:style] [] << style
+          else new_hash[language][:style] << style
           # end
         end
       end
@@ -47,4 +48,4 @@ def reformat_languages(languages)
   new_hash
 end
 
-# reformat_languages(languages)
+reformat_languages(languages)
